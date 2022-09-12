@@ -9,9 +9,14 @@ import Foundation
 
 struct Products: Codable {
     let data: [Product]
+    let currentPage: Int
+    let pageSize: Int
+    let totalResults: Int
+    let pageCount: Int
     
     enum CodingKeys: String, CodingKey {
         case data = "products"
+        case currentPage, pageSize, totalResults, pageCount
     }
 }
 
@@ -21,7 +26,7 @@ struct Product: Codable {
     let reviewInformation: ReviewInformation?
     let usps: [String]?
     let availabilityState: Int?
-    let salesPriceIncVat: Int?
+    let salesPriceIncVat: Double?
     let productImage: String?
     let coolbluesChoiceInformationTitle: String?
     let promoIcon: PromoIcon?

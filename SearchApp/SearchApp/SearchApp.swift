@@ -11,7 +11,7 @@ import SwiftUI
 struct SearchApp: App {
     var body: some Scene {
         WindowGroup {
-            SearchView(viewModel: SearchViewModel(apiClient: CoolBlueAPIClient()))
+            SearchView(viewModel: SearchViewModel())
         }
     }
 }

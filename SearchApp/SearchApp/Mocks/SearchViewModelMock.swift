@@ -7,8 +7,16 @@
 
 import Foundation
 
+#if DEBUG
+
 final class SearchViewModelMock: SearchViewModelProtocol {
+    
+    var showError = false
+        
+    var products = [Product]()
+    
     func searchBy(query: String?) {
         
     }
 }
+#endif
