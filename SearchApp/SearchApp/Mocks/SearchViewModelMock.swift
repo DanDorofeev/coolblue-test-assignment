@@ -13,9 +13,9 @@ final class SearchViewModelMock: SearchViewModelProtocol {
     
     var showError = false
         
-    var products = [Product]()
+    var products: [Product]?
     
-    func searchBy(query: String?) {
+    func searchBy(query: String) {
         
     }
 }

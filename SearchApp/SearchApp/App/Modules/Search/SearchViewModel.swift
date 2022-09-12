@@ -9,15 +9,15 @@ import Foundation
 import Combine
 
 protocol SearchViewModelProtocol: ObservableObject {
-    var products: [Product] {get}
+    var products: [Product]? {get}
     var showError: Bool {get}
-    func searchBy(query: String?)
+    func searchBy(query: String)
 }
 
 final class SearchViewModel: SearchViewModelProtocol {
     
     @Published private(set) var isLoading = false
-    @Published private(set) var products = [Product]()
+    @Published private(set) var products: [Product]?
     @Published private(set) var showError = false
     
     private let apiClient: CoolBlueAPIClientProtocol
@@ -27,9 +27,13 @@ final class SearchViewModel: SearchViewModelProtocol {
         self.apiClient = apiClient
     }
     
-    func searchBy(query: String?) {
+    func searchBy(query: String) {
+        guard !query.isEmpty else {
+            products = nil
+            return
+        }
         isLoading = true
-        cancellable = apiClient.searchBy(query: "apple", page: 1)
+        cancellable = apiClient.searchBy(query: query, page: 1)
             .sink { [weak self] completion in
                 switch completion {
                 case .failure(let error):

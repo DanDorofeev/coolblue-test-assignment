@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 struct EmptyPlaceholderModifier<Items: Collection>: ViewModifier {
-    let items: Items
+    let items: Items?
     let placeholder: AnyView
 
     @ViewBuilder func body(content: Content) -> some View {
-        if !items.isEmpty {
+        if let items = items, !items.isEmpty {
             content
         } else {
             placeholder
@@ -35,7 +35,7 @@ struct ErrorPlaceholderModifier: ViewModifier {
 }
 
 extension View {
-    func emptyPlaceholder<Items: Collection, PlaceholderView: View>(_ items: Items, _ placeholder: @escaping () -> PlaceholderView) -> some View {
+    func emptyPlaceholder<Items: Collection, PlaceholderView: View>(_ items: Items?, _ placeholder: @escaping () -> PlaceholderView) -> some View {
         modifier(EmptyPlaceholderModifier(items: items, placeholder: AnyView(placeholder())))
     }
     
