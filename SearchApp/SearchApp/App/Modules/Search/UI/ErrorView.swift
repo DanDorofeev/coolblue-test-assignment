@@ -28,6 +28,7 @@ struct ErrorView: View {
             Text(text)
                 .font(.caption)
         }
+        .frame(width: 200, height: 200)
         .background(Color.systemBackground)
     }
 }
