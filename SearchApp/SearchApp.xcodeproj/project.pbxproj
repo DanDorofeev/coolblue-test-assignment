@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C7F64BA028CF90DF006B1551 /* SearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64B9F28CF90DF006B1551 /* SearchApp.swift */; };
-		C7F64BA228CF90DF006B1551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BA128CF90DF006B1551 /* ContentView.swift */; };
+		C7F64BA228CF90DF006B1551 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BA128CF90DF006B1551 /* SearchView.swift */; };
 		C7F64BA428CF90EA006B1551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7F64BA328CF90EA006B1551 /* Assets.xcassets */; };
 		C7F64BB128CF90EB006B1551 /* SearchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BB028CF90EB006B1551 /* SearchAppTests.swift */; };
 		C7F64BBB28CF90EB006B1551 /* SearchAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BBA28CF90EB006B1551 /* SearchAppUITests.swift */; };
@@ -20,6 +20,8 @@
 		C7F64BD628CF99E1006B1551 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BD528CF99E1006B1551 /* Products.swift */; };
 		C7F64BD828CF9AA6006B1551 /* ReviewInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BD728CF9AA6006B1551 /* ReviewInformation.swift */; };
 		C7F64BDA28CF9B92006B1551 /* PromoIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BD928CF9B91006B1551 /* PromoIcon.swift */; };
+		C7F64BDE28CF9D1B006B1551 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BDD28CF9D1B006B1551 /* SearchViewModel.swift */; };
+		C7F64BE128CFA492006B1551 /* SearchViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BE028CFA492006B1551 /* SearchViewModelMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +44,7 @@
 /* Begin PBXFileReference section */
 		C7F64B9C28CF90DF006B1551 /* SearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F64B9F28CF90DF006B1551 /* SearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApp.swift; sourceTree = "<group>"; };
-		C7F64BA128CF90DF006B1551 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C7F64BA128CF90DF006B1551 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C7F64BA328CF90EA006B1551 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7F64BAC28CF90EB006B1551 /* SearchAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F64BB028CF90EB006B1551 /* SearchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAppTests.swift; sourceTree = "<group>"; };
@@ -56,6 +58,8 @@
 		C7F64BD528CF99E1006B1551 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		C7F64BD728CF9AA6006B1551 /* ReviewInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewInformation.swift; sourceTree = "<group>"; };
 		C7F64BD928CF9B91006B1551 /* PromoIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoIcon.swift; sourceTree = "<group>"; };
+		C7F64BDD28CF9D1B006B1551 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		C7F64BE028CFA492006B1551 /* SearchViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				C7F64B9F28CF90DF006B1551 /* SearchApp.swift */,
 				C7F64BCB28CF9583006B1551 /* App */,
 				C7F64BC928CF9376006B1551 /* Resources */,
+				C7F64BDF28CFA480006B1551 /* Mocks */,
 			);
 			path = SearchApp;
 			sourceTree = "<group>";
@@ -154,7 +159,7 @@
 			children = (
 				C7F64BD428CF9828006B1551 /* Models */,
 				C7F64BCA28CF93A1006B1551 /* Network */,
-				C7F64BA128CF90DF006B1551 /* ContentView.swift */,
+				C7F64BDB28CF9CF3006B1551 /* Modules */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -167,6 +172,31 @@
 				C7F64BD928CF9B91006B1551 /* PromoIcon.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C7F64BDB28CF9CF3006B1551 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C7F64BDC28CF9D0A006B1551 /* Search */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C7F64BDC28CF9D0A006B1551 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C7F64BA128CF90DF006B1551 /* SearchView.swift */,
+				C7F64BDD28CF9D1B006B1551 /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		C7F64BDF28CFA480006B1551 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				C7F64BE028CFA492006B1551 /* SearchViewModelMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,11 +329,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7F64BCF28CF971E006B1551 /* DataLoader.swift in Sources */,
-				C7F64BA228CF90DF006B1551 /* ContentView.swift in Sources */,
+				C7F64BA228CF90DF006B1551 /* SearchView.swift in Sources */,
 				C7F64BD828CF9AA6006B1551 /* ReviewInformation.swift in Sources */,
 				C7F64BD328CF97B2006B1551 /* CoolBlueAPIClient.swift in Sources */,
+				C7F64BE128CFA492006B1551 /* SearchViewModelMock.swift in Sources */,
 				C7F64BDA28CF9B92006B1551 /* PromoIcon.swift in Sources */,
 				C7F64BD628CF99E1006B1551 /* Products.swift in Sources */,
+				C7F64BDE28CF9D1B006B1551 /* SearchViewModel.swift in Sources */,
 				C7F64BCD28CF95C7006B1551 /* Endpoint.swift in Sources */,
 				C7F64BD128CF977E006B1551 /* APIError.swift in Sources */,
 				C7F64BA028CF90DF006B1551 /* SearchApp.swift in Sources */,

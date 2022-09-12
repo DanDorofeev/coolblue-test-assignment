@@ -25,7 +25,7 @@ struct Endpoint {
     
     static func searchBy(query: String, page: Int) -> Endpoint {
         return Endpoint(
-            path: "/mobile-assignment/",
+            path: "/mobile-assignment/search",
             queryItems: [URLQueryItem(name: "query", value: query),
                          URLQueryItem(name: "page", value: String(page))]
         )
