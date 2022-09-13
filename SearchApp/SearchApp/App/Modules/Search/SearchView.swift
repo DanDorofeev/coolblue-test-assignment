@@ -14,27 +14,34 @@ struct SearchView<VM: SearchViewModelProtocol>: View {
     
     @ObservedObject var viewModel: VM
     @State private var searchText = ""
+    @State var isLinkActive = false
+    @State var selectedItem: Product? = nil
+    private let listItemHeight: CGFloat = 280
             
     var body: some View {
         NavigationView {
             GeometryReader { geometryReader in
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     LazyVStack(alignment: .center, spacing: 20) {
                         if let products = viewModel.products, !products.isEmpty {
                             ForEach(products, id: \.productId) { product in
-                                ProductItemView(with: product)
-                                    .frame(width: geometryReader.size.width, height: 280)
+                                viewFor(product: product, withWidth: geometryReader.size.width)
                             }
                         }
                     }
+                    .background(
+                        NavigationLink(destination: ProductDetailsView(with: selectedItem), isActive: $isLinkActive){
+                            EmptyView()
+                        }
+                     )
                 }
             }
             .emptyPlaceholder(viewModel.products) {
-                ErrorView(imageName: "cart", text: "No results")
+                StateView(imageName: "cart", text: "No results")
                     .padding(.top, 20)
             }
             .errorPlaceholder(viewModel.showError) {
-                ErrorView(imageName: "exclamationmark.triangle", text: "Something went wrong")
+                StateView(imageName: "exclamationmark.triangle", text: "Something went wrong")
                     .padding(.top, 20)
             }
         }
@@ -43,6 +50,19 @@ struct SearchView<VM: SearchViewModelProtocol>: View {
         .onChange(of: searchText) { newQuery in
             viewModel.searchBy(query: searchText)
         }
+    }
+    
+    // MARK: - Private
+    
+    @ViewBuilder private func viewFor(product: Product, withWidth width: CGFloat) -> some View {
+        Button {
+            selectedItem = product
+            isLinkActive.toggle()
+        } label: {
+            ProductItemView(with: product)
+                .frame(width: width, height: listItemHeight)
+        }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

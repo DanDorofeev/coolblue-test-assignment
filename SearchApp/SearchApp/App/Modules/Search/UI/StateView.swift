@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ErrorView: View {
+struct StateView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -33,8 +33,8 @@ struct ErrorView: View {
     }
 }
 
-struct ErrorView_Previews: PreviewProvider {
+struct StateView_Previews: PreviewProvider {
     static var previews: some View {
-        ErrorView(imageName: "heart", text: "test text")
+        StateView(imageName: "heart", text: "test text")
     }
 }

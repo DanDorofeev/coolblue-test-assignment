@@ -12,25 +12,31 @@ struct ProductItemView: View {
     @Environment(\.colorScheme) var colorScheme
     
     private let product: Product
+    private let imageHeight: CGFloat = 180
     
     init(with product: Product) {
         self.product = product
     }
     
     var body: some View {
-        VStack {
-            if let imageString = product.productImage, let url = URL(string: imageString) {
-                mainImageWidth(url: url)
-                    .frame(height: 140)
-            }
-            
-            if let productName = product.productName {
-                Text(productName)
-                    .font(.title3)
-                    .foregroundColor(Color.label)
-            }
+        GeometryReader { geometryReader in
+            VStack(alignment: .leading) {
+                if let url = product.getImageURL() {
+                    mainImageWidth(url: url)
+                        .frame(width: geometryReader.size.width, height: imageHeight)
+                        .background(Color.white)
+                        .padding(.top, -8)
+                }
                 
+                productDescription()                    
+            }
+            .frame(minHeight: 280)
+            .background(Color.secondarySystemBackground)
+            .cornerRadius(6)
+            .shadow(color: Color.black.opacity(0.4), radius: 4)
+            
         }
+        .padding([.leading, .trailing], 16)
     }
     
     // MARK: - Private
@@ -40,11 +46,27 @@ struct ProductItemView: View {
              image
                  .resizable()
                  .scaledToFit()
-                 .frame(height: 140, alignment: .center)
-                 .background(Color.blue)
         }, placeholder: {
             ProgressView()
         })
+    }
+    
+    @ViewBuilder private func productDescription() -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            if let productName = product.productName {
+                Text(productName)
+                    .font(.title3)
+                    .foregroundColor(Color.label)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(2)
+            }
+            
+            if let price = product.priceFormattedString() {
+                Text(price)
+                    .font(.subheadline)
+                    .foregroundColor(Color.label)
+            }
+        }.padding()
     }
 }
 

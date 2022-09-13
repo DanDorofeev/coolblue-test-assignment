@@ -38,4 +38,18 @@ struct Product: Codable {
              salesPriceIncVat, productImage, coolbluesChoiceInformationTitle,
              promoIcon, nextDayDelivery
     }
+    
+    func getImageURL() -> URL? {
+        guard let image = productImage else {
+            return nil
+        }
+        return URL(string: image)
+    }
+    
+    func priceFormattedString() -> String? {
+        guard let price = salesPriceIncVat else {
+            return nil
+        }
+        return String(price).currencyString()
+    }
 }

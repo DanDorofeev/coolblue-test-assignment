@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C715E8AE28D0E3BC00F55E56 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C715E8AD28D0E3BC00F55E56 /* String+Extensions.swift */; };
+		C715E8B028D0EC6D00F55E56 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C715E8AF28D0EC6D00F55E56 /* View+Extensions.swift */; };
 		C7F64BA028CF90DF006B1551 /* SearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64B9F28CF90DF006B1551 /* SearchApp.swift */; };
 		C7F64BA228CF90DF006B1551 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BA128CF90DF006B1551 /* SearchView.swift */; };
 		C7F64BA428CF90EA006B1551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7F64BA328CF90EA006B1551 /* Assets.xcassets */; };
@@ -27,8 +29,9 @@
 		C7F64BE928CFAB5D006B1551 /* ReviewInformationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BE828CFAB5D006B1551 /* ReviewInformationMock.swift */; };
 		C7F64BEB28CFAB74006B1551 /* PromoIconMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BEA28CFAB74006B1551 /* PromoIconMock.swift */; };
 		C7F64BEE28CFAEE4006B1551 /* EmptyPlaceholderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BED28CFAEE4006B1551 /* EmptyPlaceholderModifier.swift */; };
-		C7F64BF028CFAF83006B1551 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BEF28CFAF83006B1551 /* ErrorView.swift */; };
+		C7F64BF028CFAF83006B1551 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BEF28CFAF83006B1551 /* StateView.swift */; };
 		C7F64BF328CFAFDC006B1551 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BF228CFAFDC006B1551 /* Color+Extensions.swift */; };
+		C7F64BF628CFC075006B1551 /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F64BF528CFC075006B1551 /* ProductDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C715E8AD28D0E3BC00F55E56 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		C715E8AF28D0EC6D00F55E56 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		C7F64B9C28CF90DF006B1551 /* SearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F64B9F28CF90DF006B1551 /* SearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApp.swift; sourceTree = "<group>"; };
 		C7F64BA128CF90DF006B1551 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -72,8 +77,9 @@
 		C7F64BE828CFAB5D006B1551 /* ReviewInformationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewInformationMock.swift; sourceTree = "<group>"; };
 		C7F64BEA28CFAB74006B1551 /* PromoIconMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoIconMock.swift; sourceTree = "<group>"; };
 		C7F64BED28CFAEE4006B1551 /* EmptyPlaceholderModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPlaceholderModifier.swift; sourceTree = "<group>"; };
-		C7F64BEF28CFAF83006B1551 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		C7F64BEF28CFAF83006B1551 /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		C7F64BF228CFAFDC006B1551 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		C7F64BF528CFC075006B1551 /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +198,7 @@
 		C7F64BDB28CF9CF3006B1551 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C7F64BF428CFC060006B1551 /* ProductDetails */,
 				C7F64BDC28CF9D0A006B1551 /* Search */,
 			);
 			path = Modules;
@@ -220,7 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				C7F64BE328CFA83D006B1551 /* ProductItemView.swift */,
-				C7F64BEF28CFAF83006B1551 /* ErrorView.swift */,
+				C7F64BEF28CFAF83006B1551 /* StateView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -248,8 +255,18 @@
 			isa = PBXGroup;
 			children = (
 				C7F64BF228CFAFDC006B1551 /* Color+Extensions.swift */,
+				C715E8AD28D0E3BC00F55E56 /* String+Extensions.swift */,
+				C715E8AF28D0EC6D00F55E56 /* View+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C7F64BF428CFC060006B1551 /* ProductDetails */ = {
+			isa = PBXGroup;
+			children = (
+				C7F64BF528CFC075006B1551 /* ProductDetailsView.swift */,
+			);
+			path = ProductDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,14 +398,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C715E8AE28D0E3BC00F55E56 /* String+Extensions.swift in Sources */,
+				C7F64BF628CFC075006B1551 /* ProductDetailsView.swift in Sources */,
 				C7F64BCF28CF971E006B1551 /* DataLoader.swift in Sources */,
 				C7F64BA228CF90DF006B1551 /* SearchView.swift in Sources */,
 				C7F64BD828CF9AA6006B1551 /* ReviewInformation.swift in Sources */,
 				C7F64BE428CFA83D006B1551 /* ProductItemView.swift in Sources */,
-				C7F64BF028CFAF83006B1551 /* ErrorView.swift in Sources */,
+				C7F64BF028CFAF83006B1551 /* StateView.swift in Sources */,
 				C7F64BD328CF97B2006B1551 /* CoolBlueAPIClient.swift in Sources */,
 				C7F64BE128CFA492006B1551 /* SearchViewModelMock.swift in Sources */,
 				C7F64BE628CFAA59006B1551 /* ProductsMock.swift in Sources */,
+				C715E8B028D0EC6D00F55E56 /* View+Extensions.swift in Sources */,
 				C7F64BDA28CF9B92006B1551 /* PromoIcon.swift in Sources */,
 				C7F64BE928CFAB5D006B1551 /* ReviewInformationMock.swift in Sources */,
 				C7F64BD628CF99E1006B1551 /* Products.swift in Sources */,
