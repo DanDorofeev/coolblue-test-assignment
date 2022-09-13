@@ -32,10 +32,13 @@ class CoolBlueAPIClientTests: XCTestCase {
                 case .finished:
                     break
                 }
-            }, receiveValue: { products in
-                XCTAssertEqual(products.data.count, 2)
-                XCTAssertEqual(products.data.first, Product.example1)
-                XCTAssertEqual(products.data.last, Product.example2)
+            }, receiveValue: { response in
+                let products = response.data
+                XCTAssertEqual(products.count, 2)
+                XCTAssertEqual(products.first, Product.example1)
+                XCTAssertEqual(products.last, Product.example2)
+                XCTAssertNotEqual(products.count, 3)
+                XCTAssertFalse(products.contains(Product.example3))
             }))
     }
     

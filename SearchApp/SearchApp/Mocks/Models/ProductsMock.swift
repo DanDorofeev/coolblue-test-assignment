@@ -40,5 +40,18 @@ extension Product {
                 promoIcon: PromoIcon.example2,
                 nextDayDelivery: true)
     }
+    
+    static var example3: Product {
+        Product(productId: 738620,
+                productName: "Apple iPhone 7 32GB Zwart",
+                reviewInformation: ReviewInformation.example1,
+                usps: nil,
+                availabilityState: 2,
+                salesPriceIncVat: 575,
+                productImage: nil,
+                coolbluesChoiceInformationTitle: nil,
+                promoIcon: PromoIcon.example1,
+                nextDayDelivery: true)
+    }
 }
 #endif
