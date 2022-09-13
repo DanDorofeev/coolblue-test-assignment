@@ -53,3 +53,15 @@ struct Product: Codable {
         return String(price).currencyString()
     }
 }
+
+// MARK: - Hashable
+
+extension Product: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(productId)
+    }
+        
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        return lhs.productId == rhs.productId
+    }
+}

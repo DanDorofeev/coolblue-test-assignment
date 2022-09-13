@@ -12,19 +12,17 @@ protocol CoolBlueAPIClientProtocol {
     func searchBy(query: String, page: Int) -> AnyPublisher<Products, Error>
 }
 
-final class CoolBlueAPIClient: DataLoader, CoolBlueAPIClientProtocol {
-
-    let session: URLSession
-        
-    init(configuration: URLSessionConfiguration) {
-        self.session = URLSession(configuration: configuration)
+final class CoolBlueAPIClient: CoolBlueAPIClientProtocol {
+                    
+    private let dataLoader: DataLoaderProtocol
+                        
+    //MARK: - Lifecycle
+    
+    init(dataLoader: DataLoaderProtocol = DataLoader()) {
+        self.dataLoader = dataLoader
     }
     
-    convenience init() {
-        self.init(configuration: .default)
-    }
-                
-    func searchBy(query: String, page: Int) -> AnyPublisher<Products, Error> {
-        execute(Endpoint.searchBy(query: query, page: page), decodingType: Products.self)
+    func searchBy(query: String, page: Int) -> AnyPublisher<Products, Error> {        
+        dataLoader.execute(Endpoint.searchBy(query: query, page: page), decodingType: Products.self, queue: .main, retries: 0)
     }
 }

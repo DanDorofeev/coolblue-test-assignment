@@ -8,12 +8,22 @@
 import Combine
 import UIKit
 
-protocol DataLoader {
-    var session: URLSession { get }
+protocol DataLoaderProtocol {    
     func execute<T>(_ endpoint: Endpoint, decodingType: T.Type, queue: DispatchQueue, retries: Int) -> AnyPublisher<T, Error> where T: Decodable
 }
 
-extension DataLoader {
+final class DataLoader: DataLoaderProtocol {
+    
+    let session: URLSession
+        
+    init(configuration: URLSessionConfiguration) {
+        self.session = URLSession(configuration: configuration)
+    }
+    
+    convenience init() {
+        self.init(configuration: .default)
+    }
+                
     func execute<T>(_ endpoint: Endpoint,
                     decodingType: T.Type,
                     queue: DispatchQueue = .main,
