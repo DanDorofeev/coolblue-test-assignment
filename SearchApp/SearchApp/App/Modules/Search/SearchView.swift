@@ -37,11 +37,11 @@ struct SearchView<VM: SearchViewModelProtocol>: View {
                 }
             }
             .emptyPlaceholder(viewModel.products) {
-                StateView(imageName: "cart", text: "No results")
+                StateView(type: .empty)
                     .padding(.top, 20)
             }
             .errorPlaceholder(viewModel.showError) {
-                StateView(imageName: "exclamationmark.triangle", text: "Something went wrong")
+                StateView(type: .error)
                     .padding(.top, 20)
             }
         }
