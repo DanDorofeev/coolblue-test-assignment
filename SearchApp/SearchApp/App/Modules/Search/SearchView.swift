@@ -44,11 +44,12 @@ struct SearchView<VM: SearchViewModelProtocol>: View {
                 StateView(type: .error)
                     .padding(.top, 20)
             }
-        }
-        .searchable(text: $searchText)
-        .navigationTitle("Products")
-        .onChange(of: searchText) { newQuery in
-            viewModel.searchBy(query: searchText)
+            .navigationBarTitle("Products")
+            .navigationBarTitleDisplayMode(.inline)
+            .searchable(text: $searchText)
+            .onChange(of: searchText) { newQuery in
+                viewModel.searchBy(query: newQuery)
+            }
         }
     }
     
