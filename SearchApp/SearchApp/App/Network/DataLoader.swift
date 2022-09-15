@@ -9,7 +9,7 @@ import Combine
 import UIKit
 
 protocol DataLoaderProtocol {    
-    func execute<T>(_ endpoint: Endpoint, decodingType: T.Type, queue: DispatchQueue, retries: Int) -> AnyPublisher<T, Error> where T: Decodable
+    func execute<T>(_ endpoint: Endpoint, httpMethod: String, decodingType: T.Type, queue: DispatchQueue, retries: Int) -> AnyPublisher<T, Error> where T: Decodable
 }
 
 final class DataLoader: DataLoaderProtocol {
@@ -25,16 +25,18 @@ final class DataLoader: DataLoaderProtocol {
     }
                 
     func execute<T>(_ endpoint: Endpoint,
+                    httpMethod: String = "GET",
                     decodingType: T.Type,
                     queue: DispatchQueue = .main,
                     retries: Int = 0) -> AnyPublisher<T, Error> where T: Decodable {
         
         guard let url = endpoint.url else {
-            return Empty().eraseToAnyPublisher()
+            return Fail(error: APIError.invalidURL).eraseToAnyPublisher()
         }
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json",forHTTPHeaderField: "Accept")
+        request.httpMethod = httpMethod
         
         return session.dataTaskPublisher(for: request)
             .tryMap {

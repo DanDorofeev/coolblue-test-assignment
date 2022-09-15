@@ -21,7 +21,7 @@ struct ProductItemView: View {
     var body: some View {
         GeometryReader { geometryReader in
             VStack(alignment: .leading) {
-                if let url = product.getImageURL() {
+                if let url = product.productImage {
                     mainImageWidth(url: url)
                         .frame(width: geometryReader.size.width, height: imageHeight)
                         .background(Color.white)

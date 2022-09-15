@@ -23,7 +23,7 @@ class CoolBlueAPIClientTests: XCTestCase {
     
     func testSearchSuccess() {
         apiClient = CoolBlueAPIClient(dataLoader: dataLoaderSuccessMock)
-        dataLoaderSuccessMock.testData = try! JSONEncoder().encode(Products.example)
+        dataLoaderSuccessMock.testData = try! JSONEncoder().encode(ProductsPage.example)
         subscriptions.insert(apiClient.searchBy(query: "apple", page: 1)
             .sink(receiveCompletion: { result in
                 switch result {
@@ -33,11 +33,10 @@ class CoolBlueAPIClientTests: XCTestCase {
                     break
                 }
             }, receiveValue: { response in
-                let products = response.data
+                let products = response.products
                 XCTAssertEqual(products.count, 2)
                 XCTAssertEqual(products.first, Product.example1)
-                XCTAssertEqual(products.last, Product.example2)
-                XCTAssertNotEqual(products.count, 3)
+                XCTAssertEqual(products.last, Product.example2)                
                 XCTAssertFalse(products.contains(Product.example3))
             }))
     }

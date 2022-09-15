@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-protocol CoolBlueAPIClientProtocol {
-    func searchBy(query: String, page: Int) -> AnyPublisher<Products, Error>
+protocol APIClient {
+    func searchBy(query: String, page: Int) -> AnyPublisher<ProductsPage, Error>
 }
 
-final class CoolBlueAPIClient: CoolBlueAPIClientProtocol {
+final class CoolBlueAPIClient: APIClient {
                     
     private let dataLoader: DataLoaderProtocol
                         
@@ -22,7 +22,7 @@ final class CoolBlueAPIClient: CoolBlueAPIClientProtocol {
         self.dataLoader = dataLoader
     }
     
-    func searchBy(query: String, page: Int) -> AnyPublisher<Products, Error> {        
-        dataLoader.execute(Endpoint.searchBy(query: query, page: page), decodingType: Products.self, queue: .main, retries: 0)
+    func searchBy(query: String, page: Int) -> AnyPublisher<ProductsPage, Error> {        
+        dataLoader.execute(SearchEndpoint.searchBy(query: query, page: page), httpMethod: "GET", decodingType: ProductsPage.self, queue: .main, retries: 0)
     }
 }

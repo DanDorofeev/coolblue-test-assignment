@@ -8,9 +8,9 @@
 import Foundation
 
 #if DEBUG
-extension Products {
-    static var example: Products {
-        Products(data: [Product.example1, Product.example2], currentPage: 1, pageSize: 1, totalResults: 1, pageCount: 1)
+extension ProductsPage {
+    static var example: ProductsPage {
+        ProductsPage(products: [Product.example1, Product.example2], currentPage: 1, pageSize: 1, totalResults: 1, pageCount: 1)
     }
 }
 
@@ -22,7 +22,7 @@ extension Product {
                 usps: ["32 GB opslagcapaciteit", "4,7 inch Retina HD scherm", "iOS 11"],
                 availabilityState: 2,
                 salesPriceIncVat: 369,
-                productImage: "https://image.coolblue.nl/300x750/products/818870",
+                productImage: URL(string: "https://image.coolblue.nl/300x750/products/818870"),
                 coolbluesChoiceInformationTitle: "middenklasse iPhone",
                 promoIcon: PromoIcon.example1,
                 nextDayDelivery: true)
@@ -35,7 +35,7 @@ extension Product {
                 usps: ["64 GB opslagcapaciteit", "5,8 inch Retina HD scherm", "iOS 11"],
                 availabilityState: 2,
                 salesPriceIncVat: 1079,
-                productImage: "https://image.coolblue.nl/300x750/products/982902",
+                productImage: URL(string: "https://image.coolblue.nl/300x750/products/982902"),
                 coolbluesChoiceInformationTitle: "een topklasse iPhone",
                 promoIcon: PromoIcon.example2,
                 nextDayDelivery: true)

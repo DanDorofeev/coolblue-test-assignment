@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Endpoint {
+protocol Endpoint {
+    var url: URL? {get}
+}
+
+struct SearchEndpoint: Endpoint {
     private let baseUrlScheme = "https"
     private let baseUrlHost = "bdk0sta2n0.execute-api.eu-west-1.amazonaws.com"
                     
@@ -24,7 +28,7 @@ struct Endpoint {
     }
     
     static func searchBy(query: String, page: Int) -> Endpoint {
-        return Endpoint(
+        return SearchEndpoint(
             path: "/mobile-assignment/search",
             queryItems: [URLQueryItem(name: "query", value: query),
                          URLQueryItem(name: "page", value: String(page))]

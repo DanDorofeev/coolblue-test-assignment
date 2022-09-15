@@ -12,8 +12,8 @@ import Combine
 class SearchViewModelTests: XCTestCase {
     
     private var viewModel: SearchViewModel!
-    private var apiClientSuccess: CoolBlueAPIClientProtocol!
-    private var apiClientFails: CoolBlueAPIClientProtocol!
+    private var apiClientSuccess: APIClient!
+    private var apiClientFails: APIClient!
     
     override func setUp() {
         super.setUp()

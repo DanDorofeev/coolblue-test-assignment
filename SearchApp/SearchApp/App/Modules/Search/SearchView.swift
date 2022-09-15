@@ -13,7 +13,6 @@ struct SearchView<VM: SearchViewModelProtocol>: View {
     @Environment(\.colorScheme) var colorScheme
     
     @ObservedObject var viewModel: VM
-    @State private var searchText = ""
     @State var isLinkActive = false
     @State var selectedItem: Product? = nil
     private let listItemHeight: CGFloat = 280
@@ -46,8 +45,8 @@ struct SearchView<VM: SearchViewModelProtocol>: View {
             }
             .navigationBarTitle("Products")
             .navigationBarTitleDisplayMode(.inline)
-            .searchable(text: $searchText)
-            .onChange(of: searchText) { newQuery in
+            .searchable(text: $viewModel.searchQuery)
+            .onChange(of: viewModel.searchQuery) { newQuery in
                 viewModel.searchBy(query: newQuery)
             }
         }
