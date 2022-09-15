@@ -21,15 +21,8 @@ struct ProductDetailsView: View {
     var body: some View {
         GeometryReader { geometryReader in
             ScrollView(showsIndicators: false) {
-                VStack(alignment: .center, spacing: 20) {
-                    VStack(spacing: 40) {
-                        VStack(spacing: 20) {
-                            if let url = product?.getImageURL() {
-                                mainImage(url: url, viewWidth: geometryReader.size.width)
-                            }
-                        }
-                                                   
-                    }
+                if let url = product?.productImage {
+                    mainImage(url: url, viewWidth: geometryReader.size.width)
                 }
             }
         }

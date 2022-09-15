@@ -10,13 +10,12 @@ import Foundation
 #if DEBUG
 
 final class SearchViewModelMock: SearchViewModelProtocol {
-    
+    var searchQuery: String = ""
+        
     var showError = false
         
     var products: [Product]?
     
-    func searchBy(query: String) {
-        
-    }
+    func searchBy(query: String) {}
 }
 #endif
