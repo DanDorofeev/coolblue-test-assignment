@@ -26,9 +26,9 @@ class SearchAppUITests: XCTestCase {
     func testSearchIsVisible() {
         XCTAssertTrue(searchField.exists)
         searchField.tap()
+        searchField.typeText("Apple")
         XCTAssertTrue(searchCancelButton.exists)
-        XCTAssertTrue(searchClearButton.exists)
-        XCTAssertTrue(emptyView.exists)
+        XCTAssertTrue(searchClearButton.exists)        
     }
     
     func testSearchFunctionality() {
@@ -41,6 +41,13 @@ class SearchAppUITests: XCTestCase {
         startSearch()
         XCTAssertTrue(productList.exists)
         searchClearButton.tap()
+        XCTAssertTrue(emptyView.exists)
+    }
+    
+    func testCancelSearchResults() {
+        startSearch()
+        XCTAssertTrue(productList.exists)
+        searchCancelButton.tap()
         XCTAssertTrue(emptyView.exists)
     }
     
@@ -70,13 +77,17 @@ extension SearchAppUITests {
     var errorView: XCUIElement {
         app.descendants(matching: .any)[AccessibilityIdentifiers.Views.errorView.rawValue]
     }
-            
+        
+    var navigationBar: XCUIElement {
+        app.navigationBars["Products"]
+    }
+    
     var searchField: XCUIElement {
         app.searchFields["Search"]
     }
     
     var searchCancelButton: XCUIElement {
-        searchField.buttons["Cancel"]
+        navigationBar.buttons["Cancel"]
     }
     
     var searchClearButton: XCUIElement {
