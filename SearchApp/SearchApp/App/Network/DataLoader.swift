@@ -9,12 +9,12 @@ import Combine
 import UIKit
 
 protocol DataLoaderProtocol {    
-    func execute<T>(_ endpoint: Endpoint, httpMethod: String, decodingType: T.Type, queue: DispatchQueue, retries: Int) -> AnyPublisher<T, Error> where T: Decodable
+    func execute<T>(_ endpoint: Endpoint, httpMethod: HTTPMethod, decodingType: T.Type, queue: DispatchQueue, retries: Int) -> AnyPublisher<T, Error> where T: Decodable
 }
 
 final class DataLoader: DataLoaderProtocol {
-    
-    let session: URLSession
+       
+    private let session: URLSession
         
     init(configuration: URLSessionConfiguration) {
         self.session = URLSession(configuration: configuration)
@@ -23,9 +23,9 @@ final class DataLoader: DataLoaderProtocol {
     convenience init() {
         self.init(configuration: .default)
     }
-                
+    
     func execute<T>(_ endpoint: Endpoint,
-                    httpMethod: String = "GET",
+                    httpMethod: HTTPMethod = .get,
                     decodingType: T.Type,
                     queue: DispatchQueue = .main,
                     retries: Int = 0) -> AnyPublisher<T, Error> where T: Decodable {
@@ -36,9 +36,9 @@ final class DataLoader: DataLoaderProtocol {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json",forHTTPHeaderField: "Accept")
-        request.httpMethod = httpMethod
+        request.httpMethod = httpMethod.rawValue
         
-        return session.dataTaskPublisher(for: request)
+        return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap {
                 guard let response = $0.response as? HTTPURLResponse, response.statusCode == 200 else {
                     throw APIError.responseUnsuccessful

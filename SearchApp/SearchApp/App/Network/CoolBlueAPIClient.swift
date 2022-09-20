@@ -23,6 +23,6 @@ final class CoolBlueAPIClient: APIClient {
     }
     
     func searchBy(query: String, page: Int) -> AnyPublisher<ProductsPage, Error> {        
-        dataLoader.execute(SearchEndpoint.searchBy(query: query, page: page), httpMethod: "GET", decodingType: ProductsPage.self, queue: .main, retries: 0)
+        dataLoader.execute(SearchEndpoint.searchBy(query: query, page: page), httpMethod: .get, decodingType: ProductsPage.self, queue: .main, retries: 0)
     }
 }

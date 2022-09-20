@@ -25,6 +25,9 @@ struct SearchView<VM: SearchViewModelProtocol>: View {
                         if let products = viewModel.products, !products.isEmpty {
                             ForEach(products, id: \.productId) { product in
                                 viewFor(product: product, withWidth: geometryReader.size.width)
+                                .onAppear(perform: {
+                                    viewModel.loadMoreContentIfNeeded(currentProduct: product)
+                                })
                             }
                         }
                     }

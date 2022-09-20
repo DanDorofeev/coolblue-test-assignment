@@ -10,6 +10,10 @@ import Foundation
 #if DEBUG
 
 final class SearchViewModelMock: SearchViewModelProtocol {
+    func loadMoreContentIfNeeded(currentProduct product: Product) {
+        
+    }
+    
     var searchQuery: String = ""
         
     var showError = false
