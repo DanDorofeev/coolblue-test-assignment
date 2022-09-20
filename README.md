@@ -26,8 +26,12 @@ Project description
 
 - In the product you can find a ProductDetailsView which will be shown once you select any product from the List.
 
+- Added last minute changes including pagination for the Search
+
 What can be improved:
 
 - Add caching for the images.   
 
-- The API you provided has a pagination which is not used at the moment, only the first page is shown. It can be improved but wasnt requested in the assignment description. 
+- Do not store all search results in the array. It can be a problem with a big amount of data. Needs to be solved with some offload mechanism 
+
+- Replace AsyncImage with a custom solution based on dataTaskPublisher to have a control over it and be able to cancel loading
