@@ -23,7 +23,7 @@ final class SearchViewModel: SearchViewModelProtocol {
     @Published private(set) var showError = false
     @Published var searchQuery: String = "" {
         didSet {
-            clearResults()
+            resetBeforeNewResults()
         }
     }
         
@@ -70,10 +70,13 @@ final class SearchViewModel: SearchViewModelProtocol {
     private func searchDidSuccess(with result: ProductsPage) {
         canLoadMorePages = result.totalResults - result.pageSize * maxRequestedPage > 0
         maxRequestedPage += 1
+        if products == nil {
+            products = [Product]()
+        }
         self.products?.append(contentsOf: result.products)
     }
     
-    private func clearResults() {
+    private func resetBeforeNewResults() {
         products?.removeAll()
         products = [Product]()
         maxRequestedPage = 1
